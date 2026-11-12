@@ -1,0 +1,835 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ashil Ahammed | Creative Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: none;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    background: #090a0a;
+    color: #f5f5f0;
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    background: #c5ff38;
+    opacity: .06;
+    filter: blur(150px);
+    border-radius: 50%;
+    top: 15%;
+    right: -200px;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* CURSOR */
+
+.cursor {
+    width: 12px;
+    height: 12px;
+    background: #c5ff38;
+    border-radius: 50%;
+    position: fixed;
+    z-index: 9999;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+}
+
+.cursor-follower {
+    width: 35px;
+    height: 35px;
+    border: 1px solid #c5ff38;
+    border-radius: 50%;
+    position: fixed;
+    z-index: 9998;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: .12s ease;
+}
+
+/* NAVBAR */
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28px 8%;
+    position: absolute;
+    width: 100%;
+    z-index: 10;
+}
+
+.logo {
+    font-family: 'Space Grotesk';
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.logo span { color: #c5ff38; }
+
+nav ul {
+    display: flex;
+    gap: 35px;
+    list-style: none;
+}
+
+nav a {
+    color: #aaa;
+    text-decoration: none;
+    font-size: 13px;
+    transition: .3s;
+}
+
+nav a:hover { color: #c5ff38; }
+
+/* HERO */
+
+.hero {
+    min-height: 100vh;
+    padding: 180px 8% 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.tag {
+    color: #c5ff38;
+    letter-spacing: 3px;
+    font-size: 12px;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-family: 'Space Grotesk';
+    font-size: clamp(55px, 10vw, 125px);
+    line-height: .95;
+    letter-spacing: -7px;
+}
+
+.hero h1 span { color: #c5ff38; }
+
+.hero-text {
+    color: #999;
+    max-width: 480px;
+    line-height: 1.8;
+    margin-top: 35px;
+    font-size: 15px;
+}
+
+.hero-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 55px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.btn {
+    display: inline-block;
+    background: #c5ff38;
+    color: #090a0a;
+    padding: 15px 28px;
+    border-radius: 50px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: .3s;
+    cursor: pointer;
+}
+
+.btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 35px #c5ff3840;
+}
+
+.scroll {
+    color: #777;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+/* MARQUEE */
+
+.marquee {
+    border-top: 1px solid #252525;
+    border-bottom: 1px solid #252525;
+    overflow: hidden;
+    padding: 25px 0;
+    white-space: nowrap;
+}
+
+.marquee-track {
+    display: inline-block;
+    animation: marquee 20s linear infinite;
+}
+
+.marquee span {
+    font-family: 'Space Grotesk';
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 30px;
+    color: #c5ff38;
+}
+
+@keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+/* GENERAL SECTIONS */
+
+section { padding: 110px 8%; }
+
+.section-label {
+    color: #c5ff38;
+    font-size: 12px;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+}
+
+.section-title {
+    font-family: 'Space Grotesk';
+    font-size: clamp(38px, 6vw, 65px);
+    letter-spacing: -3px;
+    margin-bottom: 55px;
+}
+
+.section-title span { color: #c5ff38; }
+
+/* ABOUT */
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: center;
+}
+
+.about-text {
+    color: #aaa;
+    line-height: 2;
+    font-size: 16px;
+}
+
+.about-text strong { color: white; }
+
+.about-box {
+    border: 1px solid #303030;
+    padding: 40px;
+    border-radius: 20px;
+    background: #111313;
+}
+
+.about-box h3 {
+    font-family: 'Space Grotesk';
+    font-size: 27px;
+    margin-bottom: 15px;
+}
+
+.about-box p {
+    color: #999;
+    line-height: 1.8;
+}
+
+/* SKILLS */
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.skill {
+    border: 1px solid #292929;
+    padding: 25px;
+    border-radius: 12px;
+    transition: .3s;
+    background: #101111;
+}
+
+.skill:hover {
+    border-color: #c5ff38;
+    transform: translateY(-7px);
+}
+
+.skill h3 {
+    font-family: 'Space Grotesk';
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.skill p {
+    color: #888;
+    font-size: 13px;
+}
+
+/* PROJECTS */
+
+.projects {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.project-card {
+    background: #111313;
+    border: 1px solid #292929;
+    border-radius: 18px;
+    overflow: hidden;
+    transition: .4s;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    border-color: #c5ff38;
+}
+
+.project-visual {
+    height: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Grotesk';
+    font-size: 30px;
+    font-weight: 700;
+    color: #c5ff38;
+    background:
+      radial-gradient(circle at 70% 30%, #c5ff3830, transparent 45%),
+      #171a17;
+}
+
+.project-info { padding: 28px; }
+
+.project-info h3 {
+    font-family: 'Space Grotesk';
+    font-size: 23px;
+    margin-bottom: 12px;
+}
+
+.project-info p {
+    color: #999;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.project-info small {
+    display: inline-block;
+    margin-top: 20px;
+    color: #c5ff38;
+}
+
+/* CREATIVE SIDE */
+
+.creative-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.creative-card {
+    min-height: 260px;
+    padding: 30px;
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background: linear-gradient(135deg, #252b20, #111313);
+    border: 1px solid #333;
+    transition: .4s;
+}
+
+.creative-card:nth-child(2) {
+    background: linear-gradient(135deg, #26203b, #111313);
+}
+
+.creative-card:hover { transform: scale(1.02); }
+
+.creative-card h3 {
+    font-family: 'Space Grotesk';
+    font-size: 27px;
+}
+
+.creative-card p {
+    color: #aaa;
+    margin-top: 10px;
+}
+
+/* CONTACT */
+
+.contact {
+    text-align: center;
+    padding: 140px 8%;
+    background: #111313;
+}
+
+.contact h2 {
+    font-family: 'Space Grotesk';
+    font-size: clamp(45px, 8vw, 90px);
+    letter-spacing: -5px;
+    margin-bottom: 25px;
+}
+
+.contact h2 span { color: #c5ff38; }
+
+.contact p {
+    color: #999;
+    margin-bottom: 30px;
+}
+
+.contact-details {
+    margin-top: 35px;
+    color: #aaa;
+    line-height: 2.2;
+}
+
+.contact-details a {
+    color: #c5ff38;
+    text-decoration: none;
+}
+
+.socials {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-top: 35px;
+}
+
+.socials a {
+    color: #aaa;
+    text-decoration: none;
+    transition: .3s;
+}
+
+.socials a:hover { color: #c5ff38; }
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #666;
+    font-size: 12px;
+    border-top: 1px solid #292929;
+}
+
+/* REVEAL ANIMATION */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(45px);
+    transition: all .8s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 768px) {
+    * { cursor: auto; }
+
+    .cursor, .cursor-follower { display: none; }
+
+    nav {
+        padding: 22px 6%;
+    }
+
+    nav ul { gap: 13px; }
+
+    nav a { font-size: 11px; }
+
+    .hero {
+        padding: 160px 6% 80px;
+    }
+
+    .hero h1 {
+        letter-spacing: -3px;
+    }
+
+    section { padding: 80px 6%; }
+
+    .about-grid,
+    .projects,
+    .creative-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about-box { padding: 25px; }
+
+    .contact h2 { letter-spacing: -2px; }
+}
+
+@media(max-width: 420px) {
+    nav ul { gap: 9px; }
+    nav a { font-size: 10px; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (hover: none), (pointer: coarse) {
+    * { cursor: auto; }
+    .cursor, .cursor-follower { display: none; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="cursor"></div>
+<div class="cursor-follower"></div>
+
+<!-- NAVIGATION -->
+
+<nav>
+    <div class="logo">ASHIL<span>.</span></div>
+
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- HERO -->
+
+<header class="hero" id="home">
+
+    <div class="tag">PORTFOLIO / 2026</div>
+
+    <h1>
+        ASHIL<br>
+        AHAMMED<span>.</span><br>
+        <span>CREATIVE</span> MIND.
+    </h1>
+
+    <p class="hero-text">
+        Hey, I'm Ashil Ahammed. A BCA graduate passionate
+        about technology, cloud computing, DevOps,
+        photography and visual storytelling.
+    </p>
+
+    <div class="hero-bottom">
+        <a href="#work" class="btn">Explore My Work ↗</a>
+        <div class="scroll">SCROLL TO EXPLORE ↓</div>
+    </div>
+
+</header>
+
+<!-- MARQUEE -->
+
+<div class="marquee">
+    <div class="marquee-track">
+        <span>DEVELOPER ✳</span>
+        <span>CREATIVE THINKER ✳</span>
+        <span>TECH ENTHUSIAST ✳</span>
+        <span>VISUAL STORYTELLER ✳</span>
+        <span>DEVELOPER ✳</span>
+        <span>CREATIVE THINKER ✳</span>
+        <span>TECH ENTHUSIAST ✳</span>
+        <span>VISUAL STORYTELLER ✳</span>
+    </div>
+</div>
+
+<!-- ABOUT -->
+
+<section id="about" class="reveal">
+
+    <div class="section-label">01 / ABOUT ME</div>
+
+    <h2 class="section-title">A LITTLE ABOUT <span>ME.</span></h2>
+
+    <div class="about-grid">
+
+        <div class="about-text">
+            I'm <strong>Ashil Ahammed</strong>, a BCA graduate
+            with a strong interest in technology and innovation.
+
+            <br><br>
+
+            My interests include cloud computing, DevOps,
+            Python development and exploring new technologies.
+
+            <br><br>
+
+            Beyond coding, I enjoy photography, videography
+            and video editing. I love combining technical
+            knowledge with creativity to build meaningful things.
+        </div>
+
+        <div class="about-box">
+            <h3>Think. Create. Innovate.</h3>
+            <p>
+                I believe creativity and technology can work
+                together to create experiences that make an impact.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<!-- SKILLS -->
+
+<section id="skills" class="reveal">
+
+    <div class="section-label">02 / WHAT I DO</div>
+
+    <h2 class="section-title">MY <span>SKILLS.</span></h2>
+
+    <div class="skills-grid">
+
+        <div class="skill">
+            <h3>Python</h3>
+            <p>Programming & Development</p>
+        </div>
+
+        <div class="skill">
+            <h3>Java</h3>
+            <p>Object Oriented Programming</p>
+        </div>
+
+        <div class="skill">
+            <h3>HTML & CSS</h3>
+            <p>Web Development</p>
+        </div>
+
+        <div class="skill">
+            <h3>JavaScript</h3>
+            <p>Interactive Websites</p>
+        </div>
+
+        <div class="skill">
+            <h3>Cloud Computing</h3>
+            <p>AWS & Cloud Fundamentals</p>
+        </div>
+
+        <div class="skill">
+            <h3>MySQL</h3>
+            <p>Database Management</p>
+        </div>
+
+        <div class="skill">
+            <h3>DevOps</h3>
+            <p>Learning CI/CD & Docker</p>
+        </div>
+
+        <div class="skill">
+            <h3>Video Editing</h3>
+            <p>Creative Visual Editing</p>
+        </div>
+
+        <div class="skill">
+            <h3>Photography</h3>
+            <p>Visual Storytelling</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- PROJECTS -->
+
+<section id="work" class="reveal">
+
+    <div class="section-label">03 / SELECTED PROJECTS</div>
+
+    <h2 class="section-title">FEATURED <span>WORK.</span></h2>
+
+    <div class="projects">
+
+        <div class="project-card">
+            <div class="project-visual">CLOUD / ML</div>
+            <div class="project-info">
+                <h3>Cloud Cost Analysis</h3>
+                <p>
+                    An ML-based system that estimates cloud
+                    infrastructure costs using resource utilization data.
+                </p>
+                <small>Python · Flask · Machine Learning</small>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-visual">SMART / IOT</div>
+            <div class="project-info">
+                <h3>Smart Irrigation System</h3>
+                <p>
+                    An IoT-based system that automates water flow
+                    using real-time soil sensor readings.
+                </p>
+                <small>IoT · Sensors · Automation</small>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-visual">WEB / DESIGN</div>
+            <div class="project-info">
+                <h3>To-Do List Website</h3>
+                <p>
+                    An interactive task management website
+                    designed to organize daily tasks.
+                </p>
+                <small>HTML · CSS · JavaScript</small>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-visual">MORE / SOON</div>
+            <div class="project-info">
+                <h3>More Projects Coming</h3>
+                <p>
+                    Exploring new ideas, technologies and
+                    creative ways to build something different.
+                </p>
+                <small>Always Learning · Always Creating</small>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- CREATIVE SIDE -->
+
+<section class="reveal">
+
+    <div class="section-label">04 / BEYOND TECHNOLOGY</div>
+
+    <h2 class="section-title">MY CREATIVE <span>SIDE.</span></h2>
+
+    <div class="creative-grid">
+
+        <div class="creative-card">
+            <h3>Photography & Videography</h3>
+            <p>Capturing moments. Creating memories.</p>
+        </div>
+
+        <div class="creative-card">
+            <h3>Video Editing</h3>
+            <p>Turning simple clips into visual stories.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- CONTACT -->
+
+<section class="contact" id="contact">
+
+    <div class="section-label">05 / GET IN TOUCH</div>
+
+    <h2>LET'S MAKE<br><span>SOMETHING.</span></h2>
+
+    <p>Have an idea, opportunity or project? Let's connect.</p>
+
+    <a href="tel:+919207479701" class="btn">
+        Call Me ↗
+    </a>
+
+    <div class="contact-details">
+
+        <p>
+            Phone:
+            <a href="tel:+919207479701">+91 9207479701</a>
+        </p>
+
+        <p>
+            WhatsApp:
+            <a href="https://wa.me/919207479701" target="_blank">
+                Chat with me ↗
+            </a>
+        </p>
+
+    </div>
+
+    <div class="socials">
+
+        <a href="https://www.linkedin.com/in/ashilahammedkk"
+           target="_blank" rel="noopener noreferrer">
+            LinkedIn ↗
+        </a>
+
+        <a href="https://www.instagram.com/zyd.ashiii"
+           target="_blank" rel="noopener noreferrer">
+            Instagram ↗
+        </a>
+
+        <a href="https://github.com/"
+           target="_blank" rel="noopener noreferrer">
+            GitHub ↗
+        </a>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+    © 2026 ASHIL AHAMMED. DESIGNED WITH CREATIVITY.
+</footer>
+
+<script>
+
+// CUSTOM CURSOR
+
+const cursor = document.querySelector('.cursor');
+const follower = document.querySelector('.cursor-follower');
+
+document.addEventListener('mousemove', (e) => {
+
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+
+    follower.style.left = e.clientX + 'px';
+    follower.style.top = e.clientY + 'px';
+
+});
+
+// SCROLL REVEAL
+
+const observer = new IntersectionObserver((entries) => {
+
+    entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+        }
+
+    });
+
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach(el => {
+    observer.observe(el);
+});
+
+</script>
+
+</body>
+</html>
